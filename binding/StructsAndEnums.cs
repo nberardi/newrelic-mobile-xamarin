@@ -2,6 +2,7 @@ using System;
 
 namespace NewRelic
 {
+	[Flags]
 	public enum NRLogLevels {
 		NRLogLevelNone    = 0,
 		NRLogLevelError   = 1 << 0,
@@ -11,6 +12,7 @@ namespace NewRelic
 		NRLogLevelALL     = 0xffff
 	}
 
+	[Flags]
 	public enum NRLogTargets {
 		NRLogTargetNone      = 0,
 		NRLogTargetConsole   = 1 << 0,

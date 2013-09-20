@@ -2,26 +2,34 @@ using System;
 using MonoTouch.Foundation;
 using MonoTouch.CoreLocation;
 
-namespace NewRelic {
-
+namespace NewRelic
+{
 	[BaseType (typeof (NSObject))]
-	public interface NewRelicAgent {
+	public interface NewRelicAgent
+	{
 		[Static, Export ("startWithApplicationToken:")]
 		void StartWithApplicationToken (string appToken);
 
 		[Static, Export ("startWithApplicationToken:withoutSecurity:")]
-		void StartWithApplicationToken (string applicationToken, bool withoutSecurity);
+		void StartWithApplicationToken (string applicationToken, bool disableSsl);
 
 		[Static, Export ("setDeviceLocation:")]
 		void SetDeviceLocation (CLLocation options);
 	}
 
 	[BaseType(typeof(NSObject))]
-	public interface NRLogger {
+	public interface NRLogger
+	{
 		[Static, Export ("setLogLevels:")]
 		void SetLogLevels (int levels);
 
 		[Static, Export ("setLogTargets:")]
 		void SetLogTargets (int targets);
+
+		[Static, Export("logFilePath")]
+		string LogFilePath { get; }
+
+		[Static, Export("clearLog")]
+		void ClearLog ();
 	}
 }
