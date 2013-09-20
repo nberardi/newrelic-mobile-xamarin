@@ -15,7 +15,5 @@ Building
 Using NewRelic.dll with your own iOS App
 ------------------------------------------
 
-Simply add NewRelic.dll to your project's References in MonoDevelop and you
+Simply add `NewRelic.dll` to your project's References in MonoDevelop and you
 are good to go!
-
-This works much better with MonoTouch. Because it doesn't override the Build-in (.NET) Error handling.
