@@ -6,7 +6,7 @@ This is a MonoTouch binding for the New Relic Agent SDK which can be found at
      https://newrelic.com/docs/releases/ios
 
 The current version of this binding is:
-* iOS: **iOS Agent 1.376**
+* **iOS Agent 1.376**
 
 Building
 ========
