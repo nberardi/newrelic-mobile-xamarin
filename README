@@ -1,0 +1,21 @@
+New Relic Agent
+==========
+
+This is a MonoTouch binding for the New Relic Agent SDK which can be found at
+
+     https://newrelic.com/docs/mobile-apps/ios-installation-and-configuration
+
+The current version of this binding is for New Relic Agent SDK 1.376
+
+Building
+========
+
+1. Run `make` in the binding directory to build NewRelic.dll
+
+Using NewRelic.dll with your own iOS App
+==========================================
+
+Simply add NewRelic.dll to your project's References in MonoDevelop and you
+are good to go!
+
+This works much better with MonoTouch. Because it doesn't override the Build-in (.NET) Error handling.
