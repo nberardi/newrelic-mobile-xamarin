@@ -1,7 +1,8 @@
 BTOUCH=/Developer/MonoTouch/usr/bin/btouch
 SMCS=/Developer/MonoTouch/usr/bin/smcs
 MONOXBUILD=/Library/Frameworks/Mono.framework/Commands/xbuild
-VERSION=3.174
+
+VERSION=3.184
 
 all: NewRelic.dll
 
@@ -14,7 +15,8 @@ libNewRelicAgent.a: NewRelic_iOS_Agent_$(VERSION).zip
 	cp NewRelic_iOS_Agent_$(VERSION)/NewRelicAgent.framework/NewRelicAgent libNewRelicAgent.a
 
 NewRelic.dll: libNewRelicAgent.a
-	$(BTOUCH) ApiDefinition.cs libNewRelicAgent.linkwith.cs -s:StructsAndEnums.cs --out=$@ --link-with=libNewRelicAgent.a,libNewRelicAgent.a
+	$(MONOXBUILD) /p:Configuration=Release NewRelic.csproj
+	cp bin/Release/NewRelic.dll NewRelic.dll
 
 clean:
 	-rm -rf bin obj *.a *.dll
