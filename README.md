@@ -5,7 +5,7 @@ This is a MonoTouch binding for the New Relic Agent SDK which can be found at
 
      https://docs.newrelic.com/docs/releases/ios
 
-The current version of this binding is **iOS Agent 3.196**
+The current version of this binding is **iOS Agent 3.257**
 
 Building
 ---------
