@@ -4,8 +4,9 @@ New Relic Agent
 This is a MonoTouch binding for the New Relic Agent SDK which can be found at
 
      https://docs.newrelic.com/docs/releases/ios
+     https://docs.newrelic.com/docs/releases/android
 
-The current version of this binding is **iOS Agent 3.324**
+The current version of this binding is **iOS Agent 3.324** and **Android Agent 3.378**
 
 Building
 ---------
