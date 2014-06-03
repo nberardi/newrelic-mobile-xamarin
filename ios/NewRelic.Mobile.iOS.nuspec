@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>NewRelic.Mobile.iOS</id>
+        <version>3.324</version>
+        <title>NewRelic Mobile iOS Agent</title>
+        <authors>Nick Berardi</authors>
+        <owners>nberard,newrelic</owners>
+        <projectUrl>https://github.com/nberardi/newrelic-mobile-xamarin</projectUrl>
+        <iconUrl>http://newrelic.com/images/avatar-newrelic.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Our first-of-its-kind SaaS mobile app monitoring solution pinpoints problems quickly in your mobile app. Spend less time troubleshooting, get more positive reviews and focus your time where it matters – developing new features and growing your user base.</description>
+        <tags>newrelic, ios, monotouch, xamarin, iphone, ipad</tags>
+    </metadata>
+    <files />
+</package>
