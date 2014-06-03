@@ -14,10 +14,10 @@ namespace NewRelic {
 		[Export ("endTimeMillis")]
 		double EndTimeMillis { get; }
 
-		[Export ("startTimeInMillis")]
+		[Export ("startTimeInMillis")] //, Verify ("ObjC method massaged into getter property", "/Users/nick/Projects/caddio/vendor/newrelic/ios/NewRelic_iOS_Agent_3.324/NewRelicAgent.framework/Versions/A/Headers/NRTimer.h", Line = 38)]
 		double StartTimeInMillis { get; }
 
-		[Export ("endTimeInMillis")]
+		[Export ("endTimeInMillis")] //, Verify ("ObjC method massaged into getter property", "/Users/nick/Projects/caddio/vendor/newrelic/ios/NewRelic_iOS_Agent_3.324/NewRelicAgent.framework/Versions/A/Headers/NRTimer.h", Line = 39)]
 		double EndTimeInMillis { get; }
 
 		[Export ("restartTimer")]
@@ -26,40 +26,27 @@ namespace NewRelic {
 		[Export ("stopTimer")]
 		void StopTimer ();
 
-		[Export ("hasRunAndFinished")]
+		[Export ("hasRunAndFinished")] //, Verify ("ObjC method massaged into getter property", "/Users/nick/Projects/caddio/vendor/newrelic/ios/NewRelic_iOS_Agent_3.324/NewRelicAgent.framework/Versions/A/Headers/NRTimer.h", Line = 42)]
 		bool HasRunAndFinished { get; }
 
-		[Export ("timeElapsedInSeconds")]
-		float TimeElapsedInSeconds { get; }
+		[Export ("timeElapsedInSeconds")] //, Verify ("ObjC method massaged into getter property", "/Users/nick/Projects/caddio/vendor/newrelic/ios/NewRelic_iOS_Agent_3.324/NewRelicAgent.framework/Versions/A/Headers/NRTimer.h", Line = 43)]
+		double TimeElapsedInSeconds { get; }
 
-		[Export ("timeElapsedInMilliSeconds")]
+		[Export ("timeElapsedInMilliSeconds")] //, Verify ("ObjC method massaged into getter property", "/Users/nick/Projects/caddio/vendor/newrelic/ios/NewRelic_iOS_Agent_3.324/NewRelicAgent.framework/Versions/A/Headers/NRTimer.h", Line = 44)]
 		double TimeElapsedInMilliSeconds { get; }
-
-//		[DllImport ("/Users/nick/Projects/caddio/vendor/newrelic/binding/NewRelic_iOS_Agent_3.154/NewRelicAgent.framework/Versions/A/Headers/NRTimer.h")]
-//		double NR_NanosecondsFromTimeInterval (double timeInterval);
-	}
-
-	[BaseType (typeof (NSObject))]
-	public partial interface NRLogger {
-
-		[Static, Export ("log:inFile:atLine:inMethod:withMessage:")]
-		void Log (uint level, string file, uint line, string method, string message);
-
-		[Static, Export ("logLevels")]
-		uint LogLevels { set; }
-
-		[Static, Export ("logTargets")]
-		uint LogTargets { set; }
-
-		[Static, Export ("logFilePath")]
-		string LogFilePath { get; }
-
-		[Static, Export ("clearLog")]
-		void ClearLog ();
 	}
 
 	[BaseType (typeof (NSObject))]
 	public partial interface NewRelic {
+
+		[Static, Export ("enableFeatures:")]
+		void EnableFeatures (NRMAFeatureFlags featureFlags);
+
+		[Static, Export ("disableFeatures:")]
+		void DisableFeatures (NRMAFeatureFlags featureFlags);
+
+		[Static, Export ("applicationVersion")] //, Verify ("ObjC method massaged into setter property", "/Users/nick/Projects/caddio/vendor/newrelic/ios/NewRelic_iOS_Agent_3.324/NewRelicAgent.framework/Versions/A/Headers/NewRelic.h", Line = 54)]
+		string ApplicationVersion { set; }
 
 		[Static, Export ("startWithApplicationToken:")]
 		void StartWithApplicationToken (string appToken);
@@ -67,7 +54,7 @@ namespace NewRelic {
 		[Static, Export ("startWithApplicationToken:withoutSecurity:")]
 		void StartWithApplicationToken (string appToken, bool disableSSL);
 
-		[Static, Export ("createAndStartTimer")]
+		[Static, Export ("createAndStartTimer")] //, Verify ("ObjC method massaged into getter property", "/Users/nick/Projects/caddio/vendor/newrelic/ios/NewRelic_iOS_Agent_3.324/NewRelicAgent.framework/Versions/A/Headers/NewRelic.h", Line = 90)]
 		NRTimer CreateAndStartTimer { get; }
 
 		[Static, Export ("startInteractionFromMethodName:object:")]
@@ -98,7 +85,7 @@ namespace NewRelic {
 		void RecordMetricWithName (string name, string category, NSNumber value, string valueUnits, string countUnits);
 
 		[Static, Export ("noticeNetworkRequestForURL:withTimer:responseHeaders:statusCode:bytesSent:bytesReceived:responseData:andParams:")]
-		void NoticeNetworkRequestForURL (NSUrl url, NRTimer timer, NSDictionary headers, int httpStatusCode, uint bytesSent, uint bytesReceived, NSData responseData, NSDictionary parameters);
+		void NoticeNetworkRequestForURL (NSUrl url, NRTimer timer, NSDictionary headers, int httpStatusCode, uint bytesSent, uint bytesReceived, NSData responseData, NSDictionary paramsDictionary);
 
 		[Static, Export ("noticeNetworkFailureForURL:withTimer:andFailureCode:")]
 		void NoticeNetworkFailureForURL (NSUrl url, NRTimer timer, int iOSFailureCode);
@@ -118,20 +105,24 @@ namespace NewRelic {
 
 		[Static, Export ("recordMetricWithName:category:value:valueUnits:countUnits:")]
 		void RecordMetricWithName (string name, string category, NSNumber value, string valueUnits, string countUnits);
+	}
 
-//		[DllImport ("/Users/nick/Projects/caddio/vendor/newrelic/binding/NewRelic_iOS_Agent_3.154/NewRelicAgent.framework/Versions/A/Headers/NRGCDOverride.h")]
-//		void NR__dispatch_async (NSObject queue, dispatch_block_t block);
-//
-//		[DllImport ("/Users/nick/Projects/caddio/vendor/newrelic/binding/NewRelic_iOS_Agent_3.154/NewRelicAgent.framework/Versions/A/Headers/NRGCDOverride.h")]
-//		void NR__dispatch_sync (NSObject queue, dispatch_block_t block);
-//
-//		[DllImport ("/Users/nick/Projects/caddio/vendor/newrelic/binding/NewRelic_iOS_Agent_3.154/NewRelicAgent.framework/Versions/A/Headers/NRGCDOverride.h")]
-//		void NR__dispatch_after (dispatch_time_t when, NSObject queue, dispatch_block_t block);
-//
-//		[DllImport ("/Users/nick/Projects/caddio/vendor/newrelic/binding/NewRelic_iOS_Agent_3.154/NewRelicAgent.framework/Versions/A/Headers/NRGCDOverride.h")]
-//		void NR__dispatch_apply (size_t iterations, NSObject queue, Delegate block);
-//
-//		[DllImport ("/Users/nick/Projects/caddio/vendor/newrelic/binding/NewRelic_iOS_Agent_3.154/NewRelicAgent.framework/Versions/A/Headers/NRGCDOverride.h")]
-//		void NR__dispatch_once ([unmapped: pointer: Pointer] once, dispatch_block_t block);
+	[BaseType (typeof (NSObject))]
+	public partial interface NRLogger {
+
+		[Static, Export ("log:inFile:atLine:inMethod:withMessage:")]
+		void Log (uint level, string file, uint line, string method, string message);
+
+		[Static, Export ("logLevels")] //, Verify ("ObjC method massaged into setter property", "/Users/nick/Projects/caddio/vendor/newrelic/ios/NewRelic_iOS_Agent_3.324/NewRelicAgent.framework/Versions/A/Headers/NRLogger.h", Line = 106)]
+		uint LogLevels { set; }
+
+		[Static, Export ("logTargets")] //, Verify ("ObjC method massaged into setter property", "/Users/nick/Projects/caddio/vendor/newrelic/ios/NewRelic_iOS_Agent_3.324/NewRelicAgent.framework/Versions/A/Headers/NRLogger.h", Line = 116)]
+		uint LogTargets { set; }
+
+		[Static, Export ("logFilePath")] //, Verify ("ObjC method massaged into getter property", "/Users/nick/Projects/caddio/vendor/newrelic/ios/NewRelic_iOS_Agent_3.324/NewRelicAgent.framework/Versions/A/Headers/NRLogger.h", Line = 123)]
+		string LogFilePath { get; }
+
+		[Static, Export ("clearLog")]
+		void ClearLog ();
 	}
 }

@@ -2,26 +2,29 @@ using System;
 
 namespace NewRelic
 {
-	[Flags]
 	public enum NRLogLevels {
 		None = 0,
 		Error = 1 << 0,
 		Warning = 1 << 1,
 		Info = 1 << 2,
 		Verbose = 1 << 3,
-		All = 0xffff
+		ALL = 65535
 	}
 
-	[Flags]
 	public enum NRLogTargets {
 		None = 0,
 		Console = 1 << 0,
-		File = 1 << 1,
-		All = 0xfff
+		File = 1 << 1
+	}
+
+	[Flags]
+	public enum NRMAFeatureFlags {
+		NRFeatureFlag_NSURLSessionInstrumentation = 1 << 4,
+		NRFeatureFlag_AllFeatures = 0
 	}
 
 	public enum NRTraceType {
-		None,
+		None = 0,
 		ViewLoading,
 		Layout,
 		Database,
