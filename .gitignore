@@ -3,3 +3,4 @@
 obj
 bin
 test-results
+.DS_Store
